@@ -20,13 +20,14 @@
 """Django URL settings module for the Arache application.
 """
 
-from django.conf.urls.defaults import *
+#from django.conf.urls.defaults import *
+from django.conf.urls import url, include
+from views import basic, advanced, opensearch, results
 
-
-urlpatterns = patterns('arachneapp.views',
-    (r'^$', 'basic'),
-    (r'^basic/$', 'basic'),
-    (r'^advanced/$', 'advanced'),
-    (r'^results/$', 'results'),
-    (r'^opensearch.xml$', 'opensearch'),
-)
+urlpatterns = [
+    url(r'^$', basic, name='basic'),
+    url(r'^basic/$', basic, name='basic'),
+    url(r'^advanced/$', advanced, name='advanced'),
+    url(r'^results/$', results, name='results'),
+    url(r'^opensearch.xml$', opensearch, name='opensearch'),
+]

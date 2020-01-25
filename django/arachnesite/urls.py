@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 #
 # Arachne: Search engine for files shared via FTP and similar protocols.
-# Copyright (C) 2008-2010 Yasser González Fernández <ygonzalezfernandez@gmail.com>
-# Copyright (C) 2008-2010 Ariel Hernández Amador <gnuaha7@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -20,13 +18,15 @@
 """Django URL settings module for the Arachne site.
 """
 
-from django.conf.urls.defaults import *
+# old
+# from django.conf.urls.defaults import *
+#
+from django.conf.urls import include, url
 
 
 handler500 = 'arachneapp.views.handler500'
-
 handler404 = 'arachneapp.views.handler404'
 
-urlpatterns = patterns('',
-    (r'^', include('arachneapp.urls')),
-)
+urlpatterns = [
+    url(r'^', include('arachneapp.urls'))
+]

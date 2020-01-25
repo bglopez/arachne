@@ -23,7 +23,7 @@
 import logging
 
 from django.conf import settings
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, render
 
 from arachne import __version__
 from arachne.searcher import IndexSearcher
@@ -50,7 +50,7 @@ def basic(request):
     """
     context = DEFAULT_CONTEXT.copy()
     context['search_type'] = 'basic'
-    return render_to_response('search.html', context)
+    return render(request, 'search.html', context)
 
 
 def advanced(request):
@@ -60,7 +60,7 @@ def advanced(request):
     context = DEFAULT_CONTEXT.copy()
     context['search_type'] = 'advanced'
     context['sites'] = searcher.get_sites()
-    return render_to_response('search.html', context)
+    return render(request, 'search.html', context)
 
 
 def results(request):
@@ -151,7 +151,7 @@ def handler500(request):
     """Handler for 500 HTTP errors.
     """
     context = DEFAULT_CONTEXT.copy()
-    return render_to_response('500.html', context)
+    return render(request, '500.html', context)
 
 
 def handler404(request):

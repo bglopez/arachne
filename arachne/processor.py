@@ -209,7 +209,7 @@ class IndexProcessor(ResultProcessor):
             enquire.set_query(query)
             indexed_entries = []
             for match in enquire.get_mset(0, doc_count):
-                doc = match.get_document()
+                doc = match._get_document()
                 is_dir = self._get_doc_value(doc, self.IS_DIR_SLOT)
                 basename = self._get_doc_value(doc, self.BASENAME_SLOT)
                 # I check this as an ugly hack to avoid removing the root
